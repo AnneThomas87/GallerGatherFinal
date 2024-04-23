@@ -1,6 +1,6 @@
 if(document.querySelector("#map"))
 {
-    const map = L.map('map').setView([43.2965, 5.3698], 13);
+    const map = L.map('map').setView([43.2965, 5.3698], 5);
     
     
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -23,7 +23,22 @@ if(document.querySelector("#map"))
     marker.bindPopup("<b>Vernissage</b><br>Artiste marseillais").openPopup();
 
 
+    fetch("api/events")
+    .then(res => res.json())
+    .then(data => {
+        //console.log(data.events)
+        data.events.forEach(evenement => {
+            if(evenement.hasOwnProperty('lat'))
+            {
+                const marker = L.marker([evenement.lat, evenement.lon ]).addTo(map)
+                marker.bindPopup(evenement.name).openPopup();
+    
+            }
+        });
+        });
 }
+
+
 
 
 

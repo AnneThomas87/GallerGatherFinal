@@ -38,6 +38,18 @@ class Evenement
     #[ORM\OneToMany(targetEntity: Media::class, mappedBy: 'evenement')]
     private Collection $media;
 
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $numero_rue = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $nom_rue = null;
+
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $cp = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $ville = null;
+
     public function __construct()
     {
         $this->media = new ArrayCollection();
@@ -149,4 +161,53 @@ class Evenement
 
         return $this;
     }
+
+    public function getNumeroRue(): ?string
+    {
+        return $this->numero_rue;
+    }
+
+    public function setNumeroRue(?string $numero_rue): static
+    {
+        $this->numero_rue = $numero_rue;
+
+        return $this;
+    }
+
+    public function getNomRue(): ?string
+    {
+        return $this->nom_rue;
+    }
+
+    public function setNomRue(?string $nom_rue): static
+    {
+        $this->nom_rue = $nom_rue;
+
+        return $this;
+    }
+
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(?string $cp): static
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(?string $ville): static
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
 }

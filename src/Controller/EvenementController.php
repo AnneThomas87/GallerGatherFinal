@@ -76,6 +76,10 @@ class EvenementController extends AbstractController
             // Récupération des données du formulaire.
             $event = $form->getData();
 
+            // ici appeler l'api geocode en php
+            // extraire les coordonnees correspondant a l'adresse postale de l'evenement
+            // ajouter les coordonnees a l'evenement ex : $event->setLatitude()
+
             // Persistation des données en base de données.
             $manager->persist($event);
 

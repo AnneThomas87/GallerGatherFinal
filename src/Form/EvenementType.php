@@ -18,6 +18,10 @@ class EvenementType extends AbstractType
             ->add('date', null, [
                 'widget' => 'single_text',
             ])
+            ->add('numero_rue')
+            ->add('nom_rue')
+            ->add('cp')
+            ->add('ville')
             ->add('description')
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
