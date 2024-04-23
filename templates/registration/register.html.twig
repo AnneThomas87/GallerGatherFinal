@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'enregistrer{% endblock %}
+
+{% block body %}
+<div class="containe1">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">S'enregistrer</h1>
+
+                    {{ form_errors(registrationForm) }}
+
+                    {{ form_start(registrationForm, {'attr': {'class': 'mb-3'}}) }}
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.first_name, {'attr': {'class': 'form-control', 'placeholder': 'First Name'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.last_name, {'attr': {'class': 'form-control', 'placeholder': 'Last Name'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.role, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Password'}}) }}
+                        </div>
+                        <div class="mb-3 form-check">
+                            {{ form_row(registrationForm.agreeTerms, {'label_attr': {'class': 'form-check-label'}, 'attr': {'class': 'form-check-input'}}) }}
+                            <label class="form-check-label" for="{{ registrationForm.agreeTerms.vars.id }}">J'accepte les conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">S'enregistrer</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

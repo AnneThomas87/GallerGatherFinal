@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello mediaController!{% endblock %}
+
+{% block body %}
+
+<h2 class="text-center mt-5">Veuillez ajouter des photos</h2>
+<div class="container">
+{{form_start(form)}}
+{{form_rest(form)}}
+
+
+{% if form is not empty and form | length > 0 %}
+<button type="submit">Envoyer</button>
+{% endif %}
+
+{{form_end(form)}}
+
+
+
+<a href="{{ path('app_pro_proView',{'id': profil.artiste.id}) }}">
+<button>Valider</button>
+</a>
+
+</div>
+
+
+{% endblock %}

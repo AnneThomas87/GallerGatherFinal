@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h1 class="text-center">Edition de Medias</h1>
+
+
+
+{% for image in images %}
+
+
+    <img src="{{ asset(image.media)}}" alt="image d'orga" width="200px">
+
+    <a  onclick="confirm('Etes vous sur ?')" href="{{path('app_orga_deleteMedia', { 'id': image.id})}}">
+                <button class="btn btn-danger">Supprimer le media</button></a>
+    
+{% endfor %}
+
+
+
+
+{% endblock %}

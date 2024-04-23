@@ -1,0 +1,59 @@
+ {% extends "base.html.twig" %}
+
+
+{% block body %}
+<h2 class="text-center mt-5" >Profil</h2>
+<div class="container">
+
+{% for user in users %}
+
+{% if user.lieu.medias is empty %}
+    <div class="no-media-message">
+        Aucune image disponible.
+
+          <a href="{{ path('app_orga_create_media', { 'id': user.lieu.id }) }}">
+                <button class="btn btn-primary">Ajouter le média</button>
+            </a>
+    </div>
+
+{% else %}
+               
+    {% for media in user.lieu.medias %}
+        <div class="media-item">
+            <img src="{{ asset(media.media) }}" alt="image d'orga">
+            <a href="{{ path('app_orga_editMedia', { 'id': media.id }) }}">
+                <button class="btn btn-danger">Supprimer le média</button>
+                  <a href="{{ path('app_orga_create_media', { 'id': user.lieu.id }) }}">
+                <button class="btn btn-primary">Ajouter un média</button>
+            </a>
+        </div>
+    {% endfor %}
+
+{% endif %}
+
+</div>
+
+    <div class='profilLieu'>
+     <p>{{ user.lieu.nom}}</p>
+        <p>{{ user.lieu.adresse}}</p>
+           <p>{{ user.lieu.description}}</p>
+           <p>{{ user.lieu.codePostal}}</p>
+                <p>{{ user.lieu.ville}}</p>
+
+<a href="{{path('app_orga_editProfil', { 'id': user.lieu.id})}}">
+                <button class="btn btn-primary">Modification du profil</button></a>
+                          <a href="{{path('app_events')}}">
+         <button class="btn btn-primary">Evénement a venir</button></a>
+         </div>
+  
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock %} 
+
+

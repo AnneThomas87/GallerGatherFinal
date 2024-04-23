@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatchmakingController!{% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    main {
+    
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+    
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+    
+      margin: 0;
+      padding: 0;
+    }
+
+    main{
+      position: relative;
+      height: 100%;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-container {
+      width: 540px;
+      height: 720px;
+    }
+
+    swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background-color : rgba(237, 135, 176, 1);
+      margin-top:10%
+    }
+
+    .text-orga
+    {
+      position: absolute;
+      bottom: 20px;
+      z-index: 2;
+      width: 80%;
+       display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 20px;
+      color: black;
+   
+      
+    }
+
+  </style>
+</head>
+
+<main>
+  <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
+
+  {% for media in medias %}
+
+       <swiper-slide>
+       <img src="{{ (media.media)}}" alt="image">
+  
+      <div class="text-orga">
+       <p>
+        {{ media.nom }} <br>
+          {{ media.adresse }} <br>
+            {{ media.ville }} <br>
+              {{ media.description }}
+        
+       </p>
+       </div>
+       </swiper-slide>
+
+
+  {% endfor %}
+  </swiper-container>
+
+
+
+</main>
+
+</html>
+
+{% endblock %}

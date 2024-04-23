@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+<h3 class="text-center mt-4"> Aujourd'hui, que faisons-nous ? </h3>
+
+		 <div id="map"></div>
+<style>
+        .containerVign {
+            max-width: 1100px;
+			margin-top: 100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+			padding: 20px;
+        }
+        .vignette {
+            width: 300px;
+			height: 200px;
+            margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            background-color: #fff; /* Ajout d'un fond blanc */
+        }
+        .vignette img {
+            width: 50%;
+            height: auto;
+        }
+        .vignette .texte {
+            padding: 10px;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        @media (max-width: 600px) {
+            .vignette {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 400px) {
+            .vignette {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+
+<div class="containerVign">
+    <!-- Première vignette -->
+    <div class="vignette">
+        <img src="{{ asset('/img/orga.jpg') }}" alt="Image 1">
+        <div class="texte">
+            <h3>Concert</h3>
+            <p>Ambiance électrisante, musique enivrante, foule...</p>
+        </div>
+    </div>
+    <!-- Deuxième vignette -->
+    <div class="vignette">
+        <img src="{{ asset('/img/orga2.jpg') }}" alt="Image 2">
+        <div class="texte">
+            <h3>Magie</h3>
+            <p>Ambiance électrisante, musique enivrante, foule...</p>
+        </div>
+    </div>
+    <!-- Troisième vignette -->
+    <div class="vignette">
+        <img src="{{ asset('/img/orga3.jpg') }}" alt="Image 3">
+        <div class="texte">
+            <h3>Concert</h3>
+            <p>Ambiance électrisante, musique enivrante, foule...</p>
+        </div>
+    </div>
+    <!-- Quatrième vignette -->
+    <div class="vignette">
+        <img src="{{ asset('/img/orga.jpg') }}" alt="Image 4">
+        <div class="texte">
+            <h3>Spectacle</h3>
+            <p>Lumières éblouissantes, performances captivantes, émotion intense...</p>
+        </div>
+    </div>
+    <!-- Cinquième vignette -->
+    <div class="vignette">
+        <img src="{{ asset('/img/orga1.jpg') }}" alt="Image 5">
+        <div class="texte">
+            <h3>Concert</h3>
+            <p>Artistes variés, ambiance festive, moments mémorables...</p>
+        </div>
+    </div>
+    <!-- Sixième vignette -->
+    <div class="vignette">
+        <img src="{{ asset('/img/orga2.jpg') }}" alt="Image 6">
+        <div class="texte">
+            <h3>Exposition</h3>
+            <p>Découvertes artistiques, œuvres captivantes, inspirations infinies...</p>
+        </div>
+		
+    </div>
+
+</div>
+
+
+
+<footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+            <a href="{{path('app_mentions')}}" class="nav-link px-2 text-dark">Mentions légales</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{path('app_contact')}}" class="nav-link px-2 text-dark">Contact</a>
+        </li>
+    </ul>
+    <p class="text-center text-dark">© 2024 GalleryGather, All rights reserved</p>
+</footer>
+
+
+
+
+
+{% endblock %}
+
+

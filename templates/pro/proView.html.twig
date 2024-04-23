@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+<h2 class="text-center mt-5" >Profil</h2>
+
+
+
+{% for user in users %}
+    {% if user.profil is not empty %}
+       
+         <div class="d-flex justify-content-center align-items-center">
+    <a href="{{ path('app_pro_create_media', { 'id': user.profil.id }) }}" class="d-flex justify-content-center">
+        <button class="btn btn-primary">Ajouter le média</button>
+    </a>
+</div>
+
+
+        <div class="container">
+        {% for media in medias %}
+         <div class="media-item">
+            <img src="{{ asset(media.media) }}" alt="image pro"> 
+
+        <a href="{{path('app_pro_editProfilMedia', { 'id': user.profil.id})}}">
+            <button class="btn btn-danger">Supprimer le média</button>  </a>
+</div> 
+         {% endfor %}
+           
+     
+        </div>
+    {% endif %}
+   <div class='profilLieu'>
+         <p>{{ user.profil.pseudo}}</p>
+            <p>{{ user.profil.description}}</p>
+            <a href="{{path('app_pro_create_profil', { 'id': user.profil.id})}}">
+                <button class="btn btn-primary">Modification du profil</button></a>
+                                    <a href="{{path('app_events')}}">
+         <button class="btn btn-primary">Evénement a venir</button></a>
+         </div>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

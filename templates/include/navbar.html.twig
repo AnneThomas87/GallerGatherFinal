@@ -1,0 +1,43 @@
+{% block body %}
+
+<nav class="navbar"> <!-- Début de la barre de navigation -->
+    <a href="{{path("app_index")}}"> <!-- Lien vers la page d'accueil -->
+        <img class="logo" src="{{ asset('/img/GalleryGather.png') }}" alt="GalleryGather"> <!-- Logo de l'application -->
+    </a>
+<div class="dropdown">
+  <button class="btn btn-light dropdown-toggle btn-lg" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Categories
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Spectacle</a></li>
+    <li><a class="dropdown-item" href="#">Concert</a></li>
+    <li><a class="dropdown-item" href="#">Vernissage</a></li>
+     <li><a class="dropdown-item" href="#">One man show</a></li>
+  </ul>
+</div>
+
+
+  <div class="navbar-buttons "> <!-- Zone des boutons de navigation -->
+     
+        {% if is_granted('ROLE_ORGA') %} <!-- Vérification si l'utilisateur est un organisateur -->
+            <a class="btn btn-light" href="{{ path('app_logout')}}">Se déconnecter</a> <!-- Bouton de déconnexion -->
+             <a class="btn btn-light" href="{{ path('app_message')}}">Message</a> 
+            <a class="btn btn-light" href="{{ path('app_matchmakingOrga')}}">Match</a> <!-- Bouton pour le matchmaking des organisateurs -->
+            <a class="btn btn-light" href="{{ path('app_orga_orgaView', {'id': app.user.id})}}">Profil</a> <!-- Bouton pour voir le profil de l'organisateur -->
+              <p class="row mt-4" >Bonjour {{ app.user.firstname | upper }} !</p> <!-- Message de bienvenue personnalisé -->
+    
+        {% elseif is_granted('ROLE_PRO') %} <!-- Sinon, vérification si l'utilisateur est un professionnel -->
+            <a class="btn btn-light" href="{{ path('app_logout')}}">Se déconnecter</a> <!-- Bouton de déconnexion -->
+              <a class="btn btn-light" href="{{ path('app_message')}}">Message</a> 
+            <a class="btn btn-light" href="{{ path('app_matchmakingPro')}}">Match</a> <!-- Bouton pour le matchmaking des professionnels -->
+            <a class="btn btn-light" href="{{ path('app_pro_proView', {'id': app.user.id})}}">Profil</a> <!-- Bouton pour voir le profil du professionnel -->
+            <p class="row mt-4" >Bonjour {{ app.user.firstname | upper }} !</p> <!-- Message de bienvenue personnalisé -->
+        {% else %} <!-- Sinon, si l'utilisateur n'est ni un organisateur ni un professionnel -->
+            <a class="btn btn-light" href="{{ path('app_register')}}">S'enregistrer</a> <!-- Bouton pour s'enregistrer -->
+            <a class="btn btn-light" href="{{ path('app_login')}}">Se connecter</a> <!-- Bouton pour se connecter -->
+        {% endif %} <!-- Fin de la condition -->
+    </div> <!-- Fin de la zone des boutons de navigation -->
+   </nav>
+
+
+{% endblock %}

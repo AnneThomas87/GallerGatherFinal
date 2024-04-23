@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MessageController!{% endblock %}
+
+{% block body %}
+<style>
+  
+       
+        .containerMess {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</style>
+
+<body>
+    <div class="containerMess">
+        <h2>Nouveau Message</h2>
+        <form action="#">
+         <a class="btn btn-light" href="{{ path('app_evenement')}}">Creer un evenement</a> 
+            <label for="destinataire">Destinataire :</label>
+            <select id="destinataire">
+                <option value="amis">Jen-luc</option>
+                <option value="famille">Marcel</option>
+                <option value="collegues">Yves</option>
+            </select>
+            <label for="message">Message :</label>
+            <textarea id="message" rows="5"></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+</body>
+{% endblock %}
