@@ -102,7 +102,7 @@
 </main>
 
 {% block javascripts %}
-	{{ parent() }}
+	{# {{ parent() }} #}
 
 	<script>
 
@@ -115,11 +115,13 @@
 	//     },
 	// }
 	// });
+
+
 	const swiper = new Swiper(".mySwiper", {
 			effect: "cards",
 			grabCursor: true,
 			});
-
+		
         const swiperEl = document.querySelector('swiper-container');
 
 

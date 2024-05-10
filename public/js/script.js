@@ -26,7 +26,6 @@ if(document.querySelector("#map"))
     fetch("api/events")
     .then(res => res.json())
     .then(data => {
-        //console.log(data.events)
         data.events.forEach(evenement => {
             if(evenement.hasOwnProperty('lat'))
             {

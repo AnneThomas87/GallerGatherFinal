@@ -30,10 +30,7 @@ class OrgaController extends AbstractController
         if (empty($user->getLieu())) {
             return $this->redirectToRoute('app_orga_create_place');
         }
-        // Check si user->getLieu() === vide 
-        // redirect user vers la création du lieu (formulaire)
-
-         return $this->render('index/index.html.twig', [
+             return $this->render('index/index.html.twig', [
             'controller_name' => 'OrgaController',
         ]);
     }
@@ -64,16 +61,10 @@ class OrgaController extends AbstractController
     {
          $media = new Media();
 
+            $lieu =  $lieuRepo->findOneBy(['id' => $id]);
 
-
-
-         $lieu =  $lieuRepo->findOneBy(['id' => $id]);
-
-
-        $form = $this->createForm(MediaType::class,$media);
-
-
-        $form->handleRequest($request);
+                $form = $this->createForm(MediaType::class,$media);
+                $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $images = $form->get('mediaLieu')->getData();

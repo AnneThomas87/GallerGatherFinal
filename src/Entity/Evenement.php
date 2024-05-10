@@ -50,6 +50,9 @@ class Evenement
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $ville = null;
 
+    #[ORM\ManyToOne(inversedBy: 'evenement')]
+    private ?Message $evenement = null;
+
     public function __construct()
     {
         $this->media = new ArrayCollection();
@@ -206,6 +209,18 @@ class Evenement
     public function setVille(?string $ville): static
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getEvenement(): ?Message
+    {
+        return $this->evenement;
+    }
+
+    public function setEvenement(?Message $evenement): static
+    {
+        $this->evenement = $evenement;
 
         return $this;
     }
